@@ -69,15 +69,27 @@ class ComponentRenderer extends StatelessWidget {
     final margin = (properties['margin'] as num?)?.toDouble() ?? 0.0;
     final backgroundColor = properties['backgroundColor'] as String?;
 
+    Widget? child;
+    if (children != null && children.isNotEmpty) {
+      // If there's only one child, render it directly
+      // If there are multiple children, wrap them in a Column
+      child = children.length == 1
+          ? ComponentRenderer(config: children.first)
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: children
+                  .map((child) => ComponentRenderer(config: child))
+                  .toList(),
+            );
+    }
+
     return Container(
       padding: EdgeInsets.all(padding),
       margin: EdgeInsets.all(margin),
       decoration: backgroundColor != null
           ? BoxDecoration(color: _parseColor(backgroundColor))
           : null,
-      child: children != null && children.isNotEmpty
-          ? ComponentRenderer(config: children.first)
-          : null,
+      child: child,
     );
   }
 
@@ -135,13 +147,25 @@ class ComponentRenderer extends StatelessWidget {
     Map<String, dynamic> properties,
     List<ComponentConfig>? children,
   ) {
+    Widget? child;
+    if (children != null && children.isNotEmpty) {
+      // If there's only one child, render it directly
+      // If there are multiple children, wrap them in a Column
+      child = children.length == 1
+          ? ComponentRenderer(config: children.first)
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: children
+                  .map((child) => ComponentRenderer(config: child))
+                  .toList(),
+            );
+    }
+
     return Card(
       elevation: (properties['elevation'] as num?)?.toDouble() ?? 1.0,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: children != null && children.isNotEmpty
-            ? ComponentRenderer(config: children.first)
-            : null,
+        child: child,
       ),
     );
   }
