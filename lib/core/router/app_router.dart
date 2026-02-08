@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../features/sdui/presentation/pages/home_screen.dart';
-import '../features/sdui/presentation/pages/sdui_screen.dart';
+import '../../features/sdui/presentation/pages/home_screen.dart';
+import '../../features/sdui/presentation/pages/sdui_screen.dart';
 
 /// Router configuration for the app
 class AppRouter {
