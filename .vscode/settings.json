@@ -1,0 +1,28 @@
+{
+  "dart.lineLength": 80,
+  "editor.rulers": [80],
+  "editor.formatOnSave": true,
+  "editor.formatOnType": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "dart.debugExternalPackageLibraries": false,
+  "dart.debugSdkLibraries": false,
+  "files.exclude": {
+    "**/.dart_tool": true,
+    "**/.packages": true,
+    "**/build": true
+  },
+  "search.exclude": {
+    "**/.dart_tool": true,
+    "**/build": true,
+    "**/*.g.dart": true,
+    "**/*.freezed.dart": true
+  }
+}
