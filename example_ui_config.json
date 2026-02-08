@@ -1,0 +1,13 @@
+{
+  "screen": {
+    "type": "card",
+    "props": {
+      "child": {
+        "type": "custom_row",
+        "props": {
+          "data": ["Server-Driven UI!", "https://example.com/image.png", "Blue"]
+        }
+      }
+    }
+  }
+}
