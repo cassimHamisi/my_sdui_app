@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import '../models/screen_config_model.dart';
 import '../../../../core/error/exceptions.dart';
+import 'mock_sdui_data.dart';
 
 /// Remote data source for SDUI operations
 abstract class SduiRemoteDataSource {
@@ -10,11 +11,28 @@ abstract class SduiRemoteDataSource {
 
 class SduiRemoteDataSourceImpl implements SduiRemoteDataSource {
   final Dio dio;
+  final bool useMockData;
 
-  SduiRemoteDataSourceImpl({required this.dio});
+  SduiRemoteDataSourceImpl({
+    required this.dio,
+    this.useMockData = true, // Set to false when you have a real API
+  });
 
   @override
   Future<ScreenConfigModel> getScreenConfig(String screenId) async {
+    // Use mock data for development/testing
+    if (useMockData) {
+      // Simulate network delay
+      await Future.delayed(const Duration(milliseconds: 500));
+      
+      final mockData = MockSduiData.getMockScreen(screenId);
+      if (mockData != null) {
+        return mockData;
+      }
+      throw ServerException('Screen not found: $screenId');
+    }
+
+    // Real API implementation
     try {
       final response = await dio.get('/screens/$screenId');
       

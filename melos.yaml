@@ -1,0 +1,46 @@
+name: sdui_monorepo
+repository: https://github.com/cassimHamisi/my_sdui_app
+
+packages:
+  - .
+  # Add more packages here as you expand the monorepo
+  # - packages/*
+
+command:
+  bootstrap:
+    runPubGetInParallel: true
+    
+  version:
+    # Only allow versioning to happen on main branch.
+    branch: main
+    
+scripts:
+  # Analyze all packages
+  analyze:
+    run: flutter analyze
+    description: Run static analysis on all packages
+    
+  # Format all Dart files
+  format:
+    run: dart format . --set-exit-if-changed
+    description: Format all Dart files
+    
+  # Run tests for all packages
+  test:
+    run: flutter test
+    description: Run tests for all packages
+    
+  # Generate code for all packages
+  generate:
+    run: flutter pub run build_runner build --delete-conflicting-outputs
+    description: Generate code for all packages
+    
+  # Clean all packages
+  clean:
+    run: flutter clean
+    description: Clean all packages
+    
+  # Get dependencies for all packages
+  get:
+    run: flutter pub get
+    description: Get dependencies for all packages
