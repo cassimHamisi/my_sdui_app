@@ -19,7 +19,7 @@ class WidgetRegistry {
         );
       case 'button':
         return ElevatedButton(
-          onPressed: () => print("Action: ${props['action']}"),
+          onPressed: () => debugPrint("Action: ${props['action']}"),
           child: Text(props['label'] ?? 'Button'),
         );
       case 'custom_row':
