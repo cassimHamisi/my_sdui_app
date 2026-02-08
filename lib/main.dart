@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'sdui_engine.dart';
+import 'examples.dart';
 
 void main() {
   runApp(const MySDUIApp());
@@ -50,6 +51,16 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               child: const Text('Open Dynamic Screen'),
+            ),
+            const SizedBox(height: 8),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SDUIExamplesScreen()),
+                );
+              },
+              child: const Text('View All Examples'),
             ),
             const SizedBox(height: 32),
 
